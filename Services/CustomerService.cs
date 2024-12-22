@@ -17,10 +17,5 @@ namespace TrainingProjectAPI.Services
             var datas = _context.Customers.ToList();
             return datas;
         }
-
-        public int GetCustomer()
-        {
-            return 1;
-        }
     }
 }
