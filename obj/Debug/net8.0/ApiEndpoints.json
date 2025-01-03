@@ -75,7 +75,7 @@
   },
   {
     "ContainingType": "TrainingProjectAPI.Controllers.ItemController",
-    "Method": "Get",
+    "Method": "GetItem",
     "RelativePath": "api/Item",
     "HttpMethod": "GET",
     "IsController": true,
@@ -85,7 +85,7 @@
   },
   {
     "ContainingType": "TrainingProjectAPI.Controllers.ItemController",
-    "Method": "Post",
+    "Method": "CreateItem",
     "RelativePath": "api/Item",
     "HttpMethod": "POST",
     "IsController": true,
@@ -101,7 +101,7 @@
   },
   {
     "ContainingType": "TrainingProjectAPI.Controllers.ItemController",
-    "Method": "Put",
+    "Method": "UpdateItem",
     "RelativePath": "api/Item",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -117,7 +117,7 @@
   },
   {
     "ContainingType": "TrainingProjectAPI.Controllers.ItemController",
-    "Method": "Delete",
+    "Method": "DeleteItem",
     "RelativePath": "api/Item",
     "HttpMethod": "DELETE",
     "IsController": true,

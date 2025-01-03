@@ -12,7 +12,7 @@ using TrainingProjectAPI.Models;
 namespace TrainingProjectAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20250102191106_Item Migration")]
+    [Migration("20250103101250_Item Migration")]
     partial class ItemMigration
     {
         /// <inheritdoc />
@@ -71,7 +71,8 @@ namespace TrainingProjectAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int>("QTY")
+                    b.Property<int?>("QTY")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Supplier")
@@ -79,7 +80,8 @@ namespace TrainingProjectAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime>("TglExpired")
+                    b.Property<DateTime?>("TglExpired")
+                        .IsRequired()
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");

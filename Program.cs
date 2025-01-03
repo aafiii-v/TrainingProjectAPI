@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using TrainingProjectAPI.Models;
@@ -21,6 +22,11 @@ builder.Services.AddDbContext<ApplicationContext>(
 builder.Services.AddScoped<CustomerService>();
 
 builder.Services.AddScoped<ItemService>();
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 
 // Add services to the container.

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace TrainingProjectAPI.Models.DB
 {
@@ -11,10 +12,10 @@ namespace TrainingProjectAPI.Models.DB
         public string NamaItem { get; set; }
 
         [Required]
-        public int QTY { get; set; }
+        public int? QTY { get; set; }
 
         [Required]
-        public DateTime TglExpired { get; set; }
+        public DateTime? TglExpired { get; set; }
 
         [Required]
         [MaxLength (100)]
