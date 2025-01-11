@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TrainingProjectAPI.Models;
 using TrainingProjectAPI.Models.DB;
 using TrainingProjectAPI.Services;
 
@@ -17,13 +18,31 @@ namespace TrainingProjectAPI.Controllers
             _customerService = customerService;
         }
 
-
         // GET: api/<CustomerController>
         [HttpGet]
         public IActionResult Get()
         {
-            var CustomerList = _customerService.GetListCustomer();
-            return Ok(CustomerList);
+            try
+            {
+                var CustomerList = _customerService.GetListCustomer();
+                var Response = new GeneralResponse
+                {
+                    StatusCode = "01",
+                    StatusDesc = "Success",
+                    Data = CustomerList
+                };
+                return Ok(Response);
+            }
+            catch (Exception ex)
+            {
+                var Response = new GeneralResponse
+                {
+                    StatusCode = "99",
+                    StatusDesc = "Failed | " + ex.Message.ToString(),
+                    Data = null
+                };
+                return BadRequest(Response);
+            }
         }
 
         // GET api/<CustomerController>/5
@@ -38,12 +57,38 @@ namespace TrainingProjectAPI.Controllers
         [HttpPost]
         public IActionResult Post(Customer customer)
         {
-            var insertCustomer = _customerService.CreateCustomer(customer);
-            if (insertCustomer)
+            try
             {
-                return Ok("Insert Customer Succes");
+                var insertCustomer = _customerService.CreateCustomer(customer);
+                if (insertCustomer) 
+                {
+                    var ResponseSuccess = new GeneralResponse
+                    {
+                        StatusCode = "01",
+                        StatusDesc = "Insert Customer Succes",
+                        Data = customer
+                    };
+                    return Ok(ResponseSuccess);
+                }
+
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "02",
+                    StatusDesc = "Insert Customer Failed",
+                    Data = null
+                };
+                return BadRequest(ResponseFailed);
             }
-            return BadRequest("insert Customer Failed");
+            catch (Exception ex)
+            {
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "99",
+                    StatusDesc = "Failed | " + ex.Message.ToString(),
+                    Data = null
+                };
+                return BadRequest(ResponseFailed);
+            }
         }
 
         // PUT api/<CustomerController>/5
@@ -55,15 +100,32 @@ namespace TrainingProjectAPI.Controllers
                 var updateCustomer = _customerService.UpdateCustomer(customer);
                 if (updateCustomer)
                 {
-                    return Ok("Update Customer Succes");
+                    var ResponseSuccess = new GeneralResponse
+                    {
+                        StatusCode = "01",
+                        StatusDesc = "Update Customer Succes",
+                        Data = updateCustomer
+                    };
+                    return Ok(ResponseSuccess);
                 }
 
-                return BadRequest("insert Customer Failed");
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "02",
+                    StatusDesc = "insert Customer Failed",
+                    Data = null
+                };
+                return BadRequest(ResponseFailed);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message.ToString());
-                throw;
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "99",
+                    StatusDesc = "Failed | " + ex.Message.ToString(),
+                    Data = null
+                };
+                return BadRequest(ResponseFailed);
             }
         }
 
@@ -76,16 +138,31 @@ namespace TrainingProjectAPI.Controllers
                 var deleteCustomer = _customerService.DeleteCustomer(id);
                 if (deleteCustomer)
                 {
-                    return Ok("Delete Customer Succes");
+                    var ResponseSuccess = new GeneralResponse
+                    {
+                        StatusCode = "01",
+                        StatusDesc = "Delete Customer Succes",
+                        Data = null
+                    };
+                    return Ok(ResponseSuccess);
                 }
-
-
-                return NotFound("Data tidak ditemukan!");
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "02",
+                    StatusDesc = "Data tidak ditemukan!",
+                    Data = null
+                };
+                return NotFound(ResponseFailed);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message.ToString());
-                throw;
+                var ResponseFailed = new GeneralResponse
+                {
+                    StatusCode = "99",
+                    StatusDesc = "Failed | " + ex.Message.ToString(),
+                    Data = null
+                };
+                return BadRequest(ResponseFailed);
             }
         }
     }
