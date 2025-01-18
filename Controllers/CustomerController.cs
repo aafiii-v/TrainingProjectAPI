@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using TrainingProjectAPI.Models;
 using TrainingProjectAPI.Models.DB;
+using TrainingProjectAPI.Models.DTO;
 using TrainingProjectAPI.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,7 +21,8 @@ namespace TrainingProjectAPI.Controllers
         }
 
         // GET: api/<CustomerController>
-        [HttpGet]
+
+        [HttpGet("GetListCustomer")]
         public IActionResult Get()
         {
             try
@@ -46,21 +49,41 @@ namespace TrainingProjectAPI.Controllers
         }
 
         // GET api/<CustomerController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetCustomerById/{id}")]
         public IActionResult GetById(int id)
         {
-            var CustomerId = _customerService.GetById(id);
-            return Ok(CustomerId);
+            try
+            {
+                var CustomerId = _customerService.GetById(id);
+                var Response = new GeneralResponse
+                {
+                    StatusCode = "01",
+                    StatusDesc = "Success",
+                    Data = CustomerId
+                };
+                return Ok(Response);
+            }
+            catch (Exception ex)
+            {
+                var Response = new GeneralResponse
+                {
+                    StatusCode = "01",
+                    StatusDesc = "Failed | " + ex.Message.ToString(),
+                    Data = null
+                };
+                return BadRequest(Response);
+            }
         }
 
         // POST api/<CustomerController>
-        [HttpPost]
-        public IActionResult Post(Customer customer)
+        [HttpPost("InsertDataCustomer")]
+        public IActionResult Post(CustomerRequestDTO customer)
         {
             try
             {
                 var insertCustomer = _customerService.CreateCustomer(customer);
-                if (insertCustomer) 
+                if (insertCustomer)
                 {
                     var ResponseSuccess = new GeneralResponse
                     {
@@ -75,7 +98,7 @@ namespace TrainingProjectAPI.Controllers
                 {
                     StatusCode = "02",
                     StatusDesc = "Insert Customer Failed",
-                    Data = null
+                    Data = customer
                 };
                 return BadRequest(ResponseFailed);
             }
@@ -92,19 +115,19 @@ namespace TrainingProjectAPI.Controllers
         }
 
         // PUT api/<CustomerController>/5
-        [HttpPut]
-        public IActionResult Put(Customer customer)
+        [HttpPut("UpdateCustomer")]
+        public IActionResult Put(int Id, CustomerRequestDTO customer)
         {
             try
             {
-                var updateCustomer = _customerService.UpdateCustomer(customer);
+                var updateCustomer = _customerService.UpdateCustomer(Id, customer);
                 if (updateCustomer)
                 {
                     var ResponseSuccess = new GeneralResponse
                     {
                         StatusCode = "01",
                         StatusDesc = "Update Customer Succes",
-                        Data = updateCustomer
+                        Data = customer
                     };
                     return Ok(ResponseSuccess);
                 }
@@ -113,7 +136,7 @@ namespace TrainingProjectAPI.Controllers
                 {
                     StatusCode = "02",
                     StatusDesc = "insert Customer Failed",
-                    Data = null
+                    Data = customer
                 };
                 return BadRequest(ResponseFailed);
             }
@@ -130,7 +153,7 @@ namespace TrainingProjectAPI.Controllers
         }
 
         // DELETE api/<CustomerController>/5
-        [HttpDelete]
+        [HttpDelete("DeleteCustomer")]
         public IActionResult Delete(int id)
         {
             try
@@ -142,7 +165,7 @@ namespace TrainingProjectAPI.Controllers
                     {
                         StatusCode = "01",
                         StatusDesc = "Delete Customer Succes",
-                        Data = null
+                        Data = deleteCustomer
                     };
                     return Ok(ResponseSuccess);
                 }
@@ -150,7 +173,7 @@ namespace TrainingProjectAPI.Controllers
                 {
                     StatusCode = "02",
                     StatusDesc = "Data tidak ditemukan!",
-                    Data = null
+                    Data = deleteCustomer
                 };
                 return NotFound(ResponseFailed);
             }
