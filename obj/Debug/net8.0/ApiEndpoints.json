@@ -1,50 +1,8 @@
 [
   {
     "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
-    "Method": "Get",
-    "RelativePath": "api/Customer",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
-    "Method": "Post",
-    "RelativePath": "api/Customer",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "customer",
-        "Type": "TrainingProjectAPI.Models.DB.Customer",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
-    "Method": "Put",
-    "RelativePath": "api/Customer",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "customer",
-        "Type": "TrainingProjectAPI.Models.DB.Customer",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
     "Method": "Delete",
-    "RelativePath": "api/Customer",
+    "RelativePath": "api/Customer/DeleteCustomer",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -60,7 +18,7 @@
   {
     "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
     "Method": "GetById",
-    "RelativePath": "api/Customer/{id}",
+    "RelativePath": "api/Customer/GetCustomerById/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -68,6 +26,53 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
+    "Method": "Get",
+    "RelativePath": "api/Customer/GetListCustomer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
+    "Method": "Post",
+    "RelativePath": "api/Customer/InsertDataCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customer",
+        "Type": "TrainingProjectAPI.Models.DTO.CustomerRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TrainingProjectAPI.Controllers.CustomerController",
+    "Method": "Put",
+    "RelativePath": "api/Customer/UpdateCustomer",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "customer",
+        "Type": "TrainingProjectAPI.Models.DTO.CustomerRequestDTO",
         "IsRequired": true
       }
     ],
