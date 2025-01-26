@@ -10,9 +10,7 @@ namespace TrainingProjectAPI.Models
             
         }
 
-
         public virtual DbSet<Customer> Customers { get; set; }
-
 
     }
 }
