@@ -28,17 +28,17 @@ namespace TrainingProjectAPI.Services
             return datas;
         }
 
-        public CustomerRequestDTO GetById(int customerById)
+        public CustomerDTO GetById(int customerById)
         {
-            var databyId = _context.Customers.Where(x => x.Id == customerById).Select(x => new CustomerRequestDTO
+            var databyId = _context.Customers.Where(x => x.Id == customerById).Select(x => new CustomerDTO
             {
-                //Id = x.Id.ToString(),
+                Id = x.Id.ToString(),
                 Name = x.Name,
                 Address = x.Address,
                 City = x.City,
                 PhoneNumber = x.PhoneNumber,
-                //CreateDate = x.CreateDate != null ? x.CreateDate.Value.ToString("dd/MM/yyyyyyy H:mm:ss") : "",
-                //UpdateDate = x.UpdateDate != null ? x.UpdateDate.Value.ToString("dd/MM/yyyyyyy H:mm:ss") : "",
+                CreateDate = x.CreateDate != null ? x.CreateDate.Value.ToString("dd/MM/yyyyyyy H:mm:ss") : "",
+                UpdateDate = x.UpdateDate != null ? x.UpdateDate.Value.ToString("dd/MM/yyyyyyy H:mm:ss") : "",
             }).FirstOrDefault();
             return databyId;
         }

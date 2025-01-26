@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2+SZ+nyauDpSmZEkNlmxqXUK7/cCqmoYCBOL3bKcwKGBvZ6SreFmXNdoc9VXhcRfGFc52Qn2who9IHivldxRhg==",
+  "dgSpecHash": "XEDECsa/dpki7P9gZ+gY5AAH0oNYGqIT1xKJrAdh6ka9pHT3fge4nxeZj311m4UZyPmwRDYShSJaAMgxbZR4mg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Afi Naufal Rizky\\OneDrive\\Desktop\\C# Lanjutan\\Pelatihan-C-Lanjutan\\TrainingProjectAPI\\TrainingProjectAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Afi Naufal Rizky\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
     "C:\\Users\\Afi Naufal Rizky\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Afi Naufal Rizky\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Afi Naufal Rizky\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
