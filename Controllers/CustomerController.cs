@@ -25,7 +25,7 @@ namespace TrainingProjectAPI.Controllers
         }
 
         // GET: api/<CustomerController>
-
+         
         [HttpGet("GetListCustomer")]
         public IActionResult Get()
         {

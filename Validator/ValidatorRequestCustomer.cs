@@ -10,12 +10,7 @@ namespace TrainingProjectAPI.Validator
         {
             RuleFor(x => x.Name).NotEmpty().MinimumLength(5).WithMessage("Name is Not Valid!");
             RuleFor(x => x.PhoneNumber).NotEmpty().MinimumLength(9).MaximumLength(13).Must(ValidPhoneNumber);
-            RuleFor(x => x.Address).NotEmpty().Must(ValidAddress);
-        }
-
-        public bool ValidAddress(string address)
-        {
-            return true;
+            RuleFor(x => x.Address).NotEmpty();
         }
 
         public bool ValidPhoneNumber(string phoneNumber)
