@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrainingProjectAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed5b39f5d3ba825659f7bc0ba71f206d71e5947c")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06feae663adaee847cd2f8bc3b5236a559a9eb52")]
+>>>>>>> ImplementFluentValidation
 [assembly: System.Reflection.AssemblyProductAttribute("TrainingProjectAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrainingProjectAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

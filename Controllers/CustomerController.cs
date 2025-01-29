@@ -140,25 +140,41 @@ namespace TrainingProjectAPI.Controllers
         {
             try
             {
-                var updateCustomer = _customerService.UpdateCustomer(Id, customer);
-                if (updateCustomer)
+                ValidatorRequestCustomer request = new ValidatorRequestCustomer();
+                _validation = request.Validate(customer);
+
+                if (_validation.IsValid)
                 {
-                    var ResponseSuccess = new GeneralResponse
+                    var updateCustomer = _customerService.UpdateCustomer(Id, customer);
+                    if (updateCustomer)
                     {
-                        StatusCode = "01",
-                        StatusDesc = "Update Customer Succes",
+                        var ResponseSuccess = new GeneralResponse
+                        {
+                            StatusCode = "01",
+                            StatusDesc = "Update Customer Succes",
+                            Data = customer
+                        };
+                        return Ok(ResponseSuccess);
+                    }
+
+                    var responseFail = new GeneralResponse
+                    {
+                        StatusCode = "400",
+                        StatusDesc = "Update Data Customer Failed!",
                         Data = customer
                     };
-                    return Ok(ResponseSuccess);
+                    return BadRequest(responseFail);
                 }
-
-                var ResponseFailed = new GeneralResponse
+                else
                 {
-                    StatusCode = "02",
-                    StatusDesc = "insert Customer Failed",
-                    Data = customer
-                };
-                return BadRequest(ResponseFailed);
+                    var ResponseFailed = new GeneralResponse
+                    {
+                        StatusCode = "02",
+                        StatusDesc = _validation.ToString(),
+                        Data = customer
+                    };
+                    return BadRequest(ResponseFailed);
+                }
             }
             catch (Exception ex)
             {
