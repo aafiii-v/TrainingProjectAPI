@@ -72,7 +72,7 @@ namespace TrainingProjectAPI.Controllers
             {
                 var Response = new GeneralResponse
                 {
-                    StatusCode = "01",
+                    StatusCode = "09",
                     StatusDesc = "Failed | " + ex.Message.ToString(),
                     Data = null
                 };
