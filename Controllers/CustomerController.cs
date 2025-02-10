@@ -208,7 +208,7 @@ namespace TrainingProjectAPI.Controllers
                 var ResponseFailed = new GeneralResponse
                 {
                     StatusCode = "02",
-                    StatusDesc = "Data tidak ditemukan!",
+                    StatusDesc = "Delete Data Failed Or Data Not Found!",
                     Data = deleteCustomer
                 };
                 return NotFound(ResponseFailed);
