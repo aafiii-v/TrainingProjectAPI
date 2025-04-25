@@ -11,3 +11,4 @@
         public DateTime? UpdateDate { get; set; }
     }
 }
+    

@@ -21,7 +21,6 @@ namespace TrainingProjectAPI.Controllers
         public CustomerController(CustomerService customerService)
         {
             _customerService = customerService;
-            _validation = new ValidationResult();
         }
 
         // GET: api/<CustomerController>

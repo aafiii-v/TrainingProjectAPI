@@ -43,7 +43,7 @@ namespace TrainingProjectAPI.Services
             return databyId;
         }
 
-        public bool CreateCustomer(CustomerRequestDTO customer)
+        public async Task<bool> CreateCustomer(CustomerRequestDTO customer)
         {
             try
             {
